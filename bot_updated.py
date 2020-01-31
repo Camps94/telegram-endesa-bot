@@ -48,7 +48,7 @@ def query_ddbb():
 
 def start(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
-	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola eduardocampillodsgarcia3! Soy tu bot de Mediterránea Catering. Haz click en /menu para saber que hay de comer hoy!")
+	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola! Prueba. Soy tu bot de Mediterránea Catering. Haz click en /menu para saber que hay de comer hoy!")
 
 def occupancy(update, context):
 	rate_occupancy = query_ddbb();
