@@ -34,9 +34,8 @@ def query_ddbb(ddbb, column, dia):
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
 		query = "SELECT " + column + " FROM " +  ddbb + " WHERE dia = " + dia + ";"
-		print (query)
 		cursor.execute(query)
-		occupancy = cursor.fetchall()
+		data = cursor.fetchall()
 
 
 	except (Exception, psycopg2.Error) as error :
