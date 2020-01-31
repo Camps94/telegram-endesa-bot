@@ -35,7 +35,7 @@ def query_ddbb(ddbb, column, dia):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		query = "SELECT " + column + " FROM " +  ddbb + " WHERE dia = " + dia + ";"
+		query = "SELECT " + column + " FROM " +  ddbb + " WHERE dia = " + dia + " LIMIT 1 ;"
 		cursor.execute(query)
 		data = cursor.fetchall()
 
@@ -55,7 +55,8 @@ def query_ddbb(ddbb, column, dia):
 
 def start(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
-	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola! Prueba. Soy tu bot de Mediterránea Catering. Haz click en /menu para saber que hay de comer hoy!")
+	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola! Prueba. Soy tu bot de Mediterránea Catering. \
+		Haz click en /menu para saber que hay de comer hoy!")
 
 def menu(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
