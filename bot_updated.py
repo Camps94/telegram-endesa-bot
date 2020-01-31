@@ -57,11 +57,7 @@ def occupancy(update, context):
 def menu(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
 	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola! Prueba. Soy tu bot de Mediterránea Catering. Haz click en /menu para saber que hay de comer hoy!")
-
-    keyboard = [
-                [InlineKeyboardButton("Happy", callback_data='1'),
-                 InlineKeyboardButton("Whatever", callback_data='2')],
-                [InlineKeyboardButton("Sad", callback_data='3')]]
+	keyboard = [[InlineKeyboardButton("Happy", callback_data='1')], [InlineKeyboardButton("Whatever", callback_data='2')], [InlineKeyboardButton("Sad", callback_data='3')]]
     reply_markup = InlineKeyboardMarkup(keyboard)
 	update.message.reply_text('Hey there! How do you feel today?', reply_markup=reply_markup)
 
