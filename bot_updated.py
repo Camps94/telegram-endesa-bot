@@ -25,17 +25,19 @@ dispatcher = updater.dispatcher
 def query_ddbb(ddbb, column, dia): 
 
 	data = ''
+	delta = int(dia)
 	try:
 
-		fecha = datetime.now() + timedelta(7)
+		fecha = datetime.now() + timedelta(delta)
 		day = fecha.strftime('%A')
+		day = "'" + day + "'"
 		connection = psycopg2.connect(user = "lstzeuvfrgwgva",
 	                                  password = "705cba1d67eefffd029de6bb3f7e1dfdd2b9f83cf8711d6bfb466e734c545a6d",
 	                                  host = "ec2-54-75-249-16.eu-west-1.compute.amazonaws.com",
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		query = "SELECT " + column + " FROM " +  ddbb + " WHERE dia = " + dia + " LIMIT 1 ;"
+		query = "SELECT " + column + " FROM " +  ddbb + " WHERE dia = " + day + " LIMIT 1 ;"
 		cursor.execute(query)
 		data = cursor.fetchall()
 		print (data)
@@ -61,9 +63,9 @@ def start(update, context):
 
 def menu(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
-	keyboard = [[InlineKeyboardButton("Ayer", callback_data="'Monday'")], 
-				[InlineKeyboardButton("Hoy", callback_data="'Tuesday'")], 
-				[InlineKeyboardButton("Mañana", callback_data="'Wednesday'")]]
+	keyboard = [[InlineKeyboardButton("Ayer", callback_data='-1')], 
+				[InlineKeyboardButton("Hoy", callback_data='0')], 
+				[InlineKeyboardButton("Mañana", callback_data='1')]]
 
 	reply_markup = InlineKeyboardMarkup(keyboard)
 	update.message.reply_text('De que día quieres saber el menu?', reply_markup=reply_markup)
