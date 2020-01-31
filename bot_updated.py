@@ -33,7 +33,7 @@ def query_ddbb(ddbb, column):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		query = "SELECT" + column + "FROM" +  ddbb + "ORDER BY id DESC LIMIT 1;"
+		query = "SELECT " + column + " FROM " +  ddbb + " ORDER BY id DESC LIMIT 1;"
 		print (query)
 		cursor.execute(query)
 		occupancy = cursor.fetchall()
