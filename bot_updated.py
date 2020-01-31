@@ -22,7 +22,7 @@ updater = Updater(TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 
 
-def query_ddbb(ddbb, column): 
+def query_ddbb(ddbb, column, dia): 
 	try:
 
 		fecha = datetime.now() + timedelta(7)
@@ -33,7 +33,7 @@ def query_ddbb(ddbb, column):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		query = "SELECT " + column + " FROM " +  ddbb + " ORDER BY id DESC LIMIT 1;"
+		query = "SELECT " + column + " FROM " +  ddbb + " WHERE dia = " + dia + ";"
 		print (query)
 		cursor.execute(query)
 		occupancy = cursor.fetchall()
@@ -50,28 +50,25 @@ def query_ddbb(ddbb, column):
 			connection.close()
 			print("PostgreSQL connection is closed")
 
-	return occupancy
+	return data
 
 def start(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
 	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola! Prueba. Soy tu bot de Mediterránea Catering. Haz click en /menu para saber que hay de comer hoy!")
 
-def occupancy(update, context):
-	rate_occupancy = query_ddbb('users_check', 'OCCUPANCY');
-	update.message.reply_text(rate_occupancy);
-
 def menu(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
-	keyboard = [[InlineKeyboardButton("Ayer", callback_data='1')], 
-				[InlineKeyboardButton("Hoy", callback_data='2')], 
-				[InlineKeyboardButton("Mañana", callback_data='3')]]
+	keyboard = [[InlineKeyboardButton("Ayer", callback_data='Monday')], 
+				[InlineKeyboardButton("Hoy", callback_data='Tuesday')], 
+				[InlineKeyboardButton("Mañana", callback_data='Wednesday')]]
 
 	reply_markup = InlineKeyboardMarkup(keyboard)
-	update.message.reply_text('Hey there! How do you feel today?', reply_markup=reply_markup)
+	update.message.reply_text('De que día quieres saber el menu?', reply_markup=reply_markup)
 
 def button(update, context):
 	query = update.callback_query
-	query.edit_message_text(text="Selected option: {}".format(query.data))
+	data = query_ddbb('daily_menu', 'primeros', query)
+	query.edit_message_text(text=data)
 
 def main():
 
@@ -84,9 +81,6 @@ def main():
 
 	start_handler = CommandHandler('menu', menu)
 	dispatcher.add_handler(start_handler)
-
-	occupancy_handler = CommandHandler("occupancy", occupancy, pass_args=False)
-	dispatcher.add_handler(occupancy_handler)
 
 	updater.start_webhook(listen="0.0.0.0", 
 						   port=PORT, 
