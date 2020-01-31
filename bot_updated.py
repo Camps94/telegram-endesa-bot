@@ -70,7 +70,7 @@ def menu(update, context):
 def button(update, context):
 	query = update.callback_query
 	data = query_ddbb('daily_menu', 'primeros', query.data)
-	print data
+	print (data)
 	query.edit_message_text(text=data)
 
 
