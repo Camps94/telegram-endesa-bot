@@ -31,7 +31,7 @@ def query_ddbb(database, column):
 
 	    cursor = connection.cursor()
 	    query = "SELECT" + column + "FROM" +  database + "ORDER BY id DESC LIMIT 1;"
-	    cursor.execute("SELECT OCCUPANCY FROM users_check ORDER BY id DESC LIMIT 1;")
+	    cursor.execute(query)
 	    occupancy = cursor.fetchall()
 
 
@@ -58,11 +58,9 @@ def occupancy(update, context):
 
 def menu(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
-	keyboard = [[InlineKeyboardButton("Happy", callback_data='1')], 
-				[InlineKeyboardButton("Whatever", callback_data='2')], 
-				[InlineKeyboardButton("Sad", callback_data='3')], 
-				[InlineKeyboardButton("Sad", callback_data='3')], 
-				[InlineKeyboardButton("Sad", callback_data='3')]]
+	keyboard = [[InlineKeyboardButton("Ayer", callback_data='1')], 
+				[InlineKeyboardButton("Hoy", callback_data='2')], 
+				[InlineKeyboardButton("Mañana", callback_data='3')]]
 
 	reply_markup = InlineKeyboardMarkup(keyboard)
 	update.message.reply_text('Hey there! How do you feel today?', reply_markup=reply_markup)
