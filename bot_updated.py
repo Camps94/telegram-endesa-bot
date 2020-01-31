@@ -23,6 +23,8 @@ dispatcher = updater.dispatcher
 
 
 def query_ddbb(ddbb, column, dia): 
+
+	data = ''
 	try:
 
 		fecha = datetime.now() + timedelta(7)
