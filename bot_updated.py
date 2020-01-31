@@ -27,8 +27,7 @@ def query_ddbb(ddbb, column):
 
 		fecha = datetime.now() + timedelta(7)
 		day = fecha.strftime('%A')
-
-	    connection = psycopg2.connect(user = "lstzeuvfrgwgva",
+		connection = psycopg2.connect(user = "lstzeuvfrgwgva",
 	                                  password = "705cba1d67eefffd029de6bb3f7e1dfdd2b9f83cf8711d6bfb466e734c545a6d",
 	                                  host = "ec2-54-75-249-16.eu-west-1.compute.amazonaws.com",
 	                                  port = "5432",
