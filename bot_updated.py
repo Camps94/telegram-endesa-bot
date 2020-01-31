@@ -32,12 +32,11 @@ def query_ddbb(ddbb, column):
 	                                  host = "ec2-54-75-249-16.eu-west-1.compute.amazonaws.com",
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
-
-	    cursor = connection.cursor()
-	    query = "SELECT" + column + "FROM" +  ddbb + "ORDER BY id DESC LIMIT 1;"
-	    print (query)
-	    cursor.execute(query)
-	    occupancy = cursor.fetchall()
+		cursor = connection.cursor()
+		query = "SELECT" + column + "FROM" +  ddbb + "ORDER BY id DESC LIMIT 1;"
+		print (query)
+		cursor.execute(query)
+		occupancy = cursor.fetchall()
 
 
 	except (Exception, psycopg2.Error) as error :
