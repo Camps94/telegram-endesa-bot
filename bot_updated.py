@@ -38,6 +38,7 @@ def query_ddbb(ddbb, column, dia):
 		query = "SELECT " + column + " FROM " +  ddbb + " WHERE dia = " + dia + " LIMIT 1 ;"
 		cursor.execute(query)
 		data = cursor.fetchall()
+		print (data)
 
 
 	except (Exception, psycopg2.Error) as error :
@@ -70,7 +71,6 @@ def menu(update, context):
 def button(update, context):
 	query = update.callback_query
 	data = query_ddbb('daily_menu', 'primeros', query.data)
-	print (data)
 	query.edit_message_text(text=data)
 
 
