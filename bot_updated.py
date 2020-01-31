@@ -7,6 +7,7 @@ import logging
 import os
 import sys
 import psycopg2
+from datetime import datetime, timedelta
 
 # Enabling logging
 
@@ -20,8 +21,12 @@ PORT = int(os.environ.get("PORT", "8443"))
 updater = Updater(TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 
-def query_ddbb(database, column): 
+
+def query_ddbb(ddbb, column): 
 	try:
+
+		fecha = datetime.now() + timedelta(7)
+		day = fecha.strftime('%A')
 
 	    connection = psycopg2.connect(user = "lstzeuvfrgwgva",
 	                                  password = "705cba1d67eefffd029de6bb3f7e1dfdd2b9f83cf8711d6bfb466e734c545a6d",
@@ -30,7 +35,7 @@ def query_ddbb(database, column):
 	                                  database = "d9iffrf6gikj6a")
 
 	    cursor = connection.cursor()
-	    query = "SELECT" + column + "FROM" +  database + "ORDER BY id DESC LIMIT 1;"
+	    query = "SELECT" + column + "FROM" +  ddbb + "ORDER BY id DESC LIMIT 1;"
 	    cursor.execute(query)
 	    occupancy = cursor.fetchall()
 
