@@ -20,7 +20,7 @@ PORT = int(os.environ.get("PORT", "8443"))
 updater = Updater(TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 
-def query_ddbb(): 
+def query_ddbb(database, column): 
 	try:
 
 	    connection = psycopg2.connect(user = "lstzeuvfrgwgva",
@@ -30,6 +30,7 @@ def query_ddbb():
 	                                  database = "d9iffrf6gikj6a")
 
 	    cursor = connection.cursor()
+	    query = "SELECT" + column + "FROM" +  database + "ORDER BY id DESC LIMIT 1;"
 	    cursor.execute("SELECT OCCUPANCY FROM users_check ORDER BY id DESC LIMIT 1;")
 	    occupancy = cursor.fetchall()
 
@@ -52,12 +53,17 @@ def start(update, context):
 	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola! Prueba. Soy tu bot de Mediterránea Catering. Haz click en /menu para saber que hay de comer hoy!")
 
 def occupancy(update, context):
-	rate_occupancy = query_ddbb();
+	rate_occupancy = query_ddbb('users_check', 'OCCUPANCY');
 	update.message.reply_text(rate_occupancy);
 
 def menu(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
-	keyboard = [[InlineKeyboardButton("Happy", callback_data='1')], [InlineKeyboardButton("Whatever", callback_data='2')], [InlineKeyboardButton("Sad", callback_data='3')]]
+	keyboard = [[InlineKeyboardButton("Happy", callback_data='1')], 
+				[InlineKeyboardButton("Whatever", callback_data='2')], 
+				[InlineKeyboardButton("Sad", callback_data='3')], 
+				[InlineKeyboardButton("Sad", callback_data='3')], 
+				[InlineKeyboardButton("Sad", callback_data='3')]]
+
 	reply_markup = InlineKeyboardMarkup(keyboard)
 	update.message.reply_text('Hey there! How do you feel today?', reply_markup=reply_markup)
 
@@ -70,7 +76,7 @@ def main():
 	logger.info("Starting bot")
 
 	updater.dispatcher.add_handler(CallbackQueryHandler(button))
-	
+
 	start_handler = CommandHandler('start', start)
 	dispatcher.add_handler(start_handler)
 
