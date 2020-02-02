@@ -39,8 +39,10 @@ def query_ddbb(ddbb, dia):
 		cursor = connection.cursor()
 		query = "SELECT " + primeros, segundos + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
 		cursor.execute(query)
-		data = list(cursor)
-		#data = cursor.fetchall()
+		#data = list(cursor)
+		data = cursor.fetchall()
+		print (data)
+		print (type(data))
 
 
 	except (Exception, psycopg2.Error) as error :
