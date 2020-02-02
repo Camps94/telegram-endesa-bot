@@ -73,6 +73,7 @@ def menu(update, context):
 def button(update, context):
 	query = update.callback_query
 	data = query_ddbb('daily_menu', 'primeros', query.data)
+	context.bot.send_message(chat_id=update.effective_chat.id, text="PRIMEROS")
 	query.edit_message_text(text=data)
 
 
