@@ -39,11 +39,7 @@ def query_ddbb(ddbb, dia):
 		cursor = connection.cursor()
 		query = "SELECT " + "primeros, segundos" + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
 		cursor.execute(query)
-		#data = list(cursor)
 		data = cursor.fetchall()
-		print (data)
-		print (type(data))
-
 
 	except (Exception, psycopg2.Error) as error :
 		if(connection):
@@ -76,7 +72,7 @@ def button(update, context):
 	query = update.callback_query
 	data = query_ddbb('daily_menu', query.data)
 	context.bot.send_message(chat_id=update.effective_chat.id, text="PRIMEROS")
-	context.bot.send_message(chat_id=update.effective_chat.id, text=data[1])
+	context.bot.send_message(chat_id=update.effective_chat.id, text=data)
 
 
 
