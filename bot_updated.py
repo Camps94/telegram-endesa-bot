@@ -24,7 +24,7 @@ dispatcher = updater.dispatcher
 
 def query_ddbb(ddbb, dia): 
 
-
+	data = []
 	delta = int(dia)
 	try:
 
@@ -39,7 +39,8 @@ def query_ddbb(ddbb, dia):
 		cursor = connection.cursor()
 		query = "SELECT " + primeros, segundos + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
 		cursor.execute(query)
-		data = cursor.fetchall()
+		data = list(cursor)
+		#data = cursor.fetchall()
 
 
 	except (Exception, psycopg2.Error) as error :
