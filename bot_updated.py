@@ -24,7 +24,7 @@ dispatcher = updater.dispatcher
 
 def query_ddbb(ddbb, column, dia): 
 
-	data = ''
+	#data = ''
 	delta = int(dia)
 	try:
 
@@ -37,7 +37,7 @@ def query_ddbb(ddbb, column, dia):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		query = "SELECT " + column + " FROM " +  ddbb + " WHERE dia = " + day + " LIMIT 1 ;"
+		query = "SELECT " + column + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
 		cursor.execute(query)
 		data = cursor.fetchall()
 		print (data)
