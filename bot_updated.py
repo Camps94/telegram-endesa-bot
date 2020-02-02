@@ -24,7 +24,7 @@ dispatcher = updater.dispatcher
 
 def query_ddbb(ddbb, dia): 
 
-	#data = ''
+	data = ()
 	delta = int(dia)
 	try:
 
