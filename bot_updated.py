@@ -37,7 +37,7 @@ def query_ddbb(ddbb, dia):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		query = "SELECT " + primeros, segundos + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
+		query = "SELECT " + "primeros, segundos" + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
 		cursor.execute(query)
 		#data = list(cursor)
 		data = cursor.fetchall()
