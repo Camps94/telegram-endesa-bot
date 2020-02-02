@@ -72,7 +72,7 @@ def button(update, context):
 	query = update.callback_query
 	data = query_ddbb('daily_menu', query.data)
 	context.bot.send_message(chat_id=update.effective_chat.id, text="PRIMEROS")
-	context.bot.send_message(chat_id=update.effective_chat.id, text=data)
+	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][1])
 
 
 
