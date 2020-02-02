@@ -20,17 +20,18 @@ driver.find_element_by_id('password').send_keys("123456")
 driver.find_element_by_xpath("/html/body/div[1]/div/div/div/div/form/div[3]/button").click()
 time.sleep(5)
 driver.find_element_by_xpath("/html/body/div[1]/div[1]/div/ul/li[4]/button").click()
-time.sleep(10)
+time.sleep(15)
 driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div[3]/div[2]/div/button[6]").click()
 fecha = datetime.now() + timedelta(5)
 day = fecha.strftime('%A')
-time.sleep(15)
+time.sleep(10)
 divisions = driver.find_elements_by_class_name('scrollable')
 
 
 ##################################################################################
 
 list = ["Unicos", "Primeros", "Segundos", "Guarniciones", "Postre", "Bebidas"]
+Tipos = []
 Unicos = []
 Primeros = []
 Segundos = []
@@ -39,42 +40,68 @@ Postre = []
 Bebidas = []
 integer = 0
 
-
 for elm in divisions:
+	
 	content = elm.find_elements_by_class_name('fw-700')
+	category = elm.find_elements_by_css_selector("span.text-uppercase.font-14.text-green")
+	Tipos = []
 	if list[integer] == 'Unicos':
+		for cat in category:
+			catg = cat.text
+			Tipos.append(catg)
 		for element in content:
-			Unicos.append(element.text)
+			dish = (element.text).title()
+			Unicos.append(dish)
+		total = [ x + ': ' + y for x, y in zip(Tipos, Unicos)]
+		unicos_v = ' | '.join(total) 
 	elif list[integer] == 'Primeros':
+		for cat in category:
+			catg = cat.text
+			Tipos.append(catg)
 		for element in content:
-			Primeros.append(element.text)
+			dish = (element.text).title()
+			Primeros.append(dish)
+		total = [ x + ': ' + y for x, y in zip(Tipos, Primeros)]
+		primeros_v = ' | '.join(total) 
 	elif list[integer] == 'Segundos':
+		for cat in category:
+			catg = cat.text
+			Tipos.append(catg)
 		for element in content:
-			Segundos.append(element.text)
+			dish = (element.text).title()
+			Segundos.append(dish)
+		total = [ x + ': ' + y for x, y in zip(Tipos, Segundos)]
+		segundos_v = ' | '.join(total) 
 	elif list[integer] == 'Guarniciones':
+		for cat in category:
+			catg = cat.text
+			Tipos.append(catg)
 		for element in content:
-			Guarniciones.append(element.text)
+			dish = (element.text).title()
+			Guarniciones.append(dish)
+		total = [ x + ': ' + y for x, y in zip(Tipos, Guarniciones)]
+		guarniciones_v = ' | '.join(total) 
 	elif list[integer] == 'Postre':
+		for cat in category:
+			catg = cat.text
+			Tipos.append(catg)
 		for element in content:
-			Postre.append(element.text)
+			dish = (element.text).title()
+			Postre.append(dish)
+		total = [ x + ': ' + y for x, y in zip(Tipos, Postre)]
+		postre_v = ' | '.join(total) 
 	elif list[integer] == 'Bebidas':
+		for cat in category:
+			catg = cat.text
+			Tipos.append(catg)
 		for element in content:
-			Bebidas.append(element.text)
+			dish = (element.text).title()
+			Bebidas.append(dish)
+		total = [ x + ': ' + y for x, y in zip(Tipos, Bebidas)]
+		bebidas_v = ' | '.join(total) 
 
 	integer = integer + 1
 
-unicos_v = "|"
-unicos_v = unicos_v.join(Unicos)  
-primeros_v = "|"
-primeros_v = primeros_v.join(Primeros) 
-segundos_v = "|"
-segundos_v = segundos_v.join(Segundos) 
-guarniciones_v = "|"
-guarniciones_v = guarniciones_v.join(Guarniciones) 
-postre_v = "|"
-postre_v = postre_v.join(Postre) 
-bebidas_v = "|"
-bebidas_v = bebidas_v.join(Bebidas)
 
 try:
 

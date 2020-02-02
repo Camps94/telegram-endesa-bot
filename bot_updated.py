@@ -22,7 +22,7 @@ updater = Updater(TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 
 
-def query_ddbb(ddbb, column, dia): 
+def query_ddbb(ddbb, dia): 
 
 	#data = ''
 	delta = int(dia)
@@ -37,7 +37,7 @@ def query_ddbb(ddbb, column, dia):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		query = "SELECT " + column + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
+		query = "SELECT " + primeros, segundos + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
 		cursor.execute(query)
 		data = cursor.fetchall()
 		print (data)
@@ -72,10 +72,9 @@ def menu(update, context):
 
 def button(update, context):
 	query = update.callback_query
-	data = query_ddbb('daily_menu', 'primeros', query.data)
+	data = query_ddbb('daily_menu', query.data)
 	context.bot.send_message(chat_id=update.effective_chat.id, text="PRIMEROS")
-	context.bot.send_message(chat_id=update.effective_chat.id, text=data)
-	#query.edit_message_text(text=data)
+	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0])
 
 
 
