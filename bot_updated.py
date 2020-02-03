@@ -82,6 +82,12 @@ def button(update, context):
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*POSTRES*__")
 	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][4])
 
+
+def unknown(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
+
+
+
 def main():
 
 	logger.info("Starting bot")
@@ -93,6 +99,9 @@ def main():
 
 	start_handler = CommandHandler('menu', menu)
 	dispatcher.add_handler(start_handler)
+
+	unknown_handler = MessageHandler(Filters.command, unknown)
+	dispatcher.add_handler(unknown_handler)
 
 	updater.start_webhook(listen="0.0.0.0", 
 						   port=PORT, 
