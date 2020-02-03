@@ -71,7 +71,7 @@ def menu(update, context):
 def button(update, context):
 	query = update.callback_query
 	data = query_ddbb('daily_menu', query.data)
-	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*bold \*Primeros*")
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*PRIMEROS*")
 	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][0])
 	context.bot.send_message(chat_id=update.effective_chat.id, text="Segundos")
 	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][1])
