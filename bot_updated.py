@@ -87,7 +87,7 @@ def button(update, context):
 
 
 def unknown(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Lo siento pero no te entendí. Haz click en /menu para conocer el menu de hoy")
 
 
 
@@ -105,6 +105,10 @@ def main():
 
 	unknown_handler = MessageHandler(Filters.command, unknown)
 	dispatcher.add_handler(unknown_handler)
+
+	unknown_handler2 = MessageHandler(Filters.text, unknown)
+	dispatcher.add_handler(unknown_handler2)
+
 
 	updater.start_webhook(listen="0.0.0.0", 
 						   port=PORT, 
