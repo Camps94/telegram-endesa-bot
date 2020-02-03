@@ -37,7 +37,7 @@ def query_ddbb(ddbb, dia):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		query = "SELECT " + "primeros, segundos" + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
+		query = "SELECT " + "primeros, segundos, unicos, guarniciones, postres" + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
 		cursor.execute(query)
 		data = cursor.fetchall()
 
@@ -73,11 +73,14 @@ def button(update, context):
 	data = query_ddbb('daily_menu', query.data)
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*PRIMEROS*__")
 	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][0])
-	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*SEGUNDOS*")
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*SEGUNDOS*__")
 	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][1])
-
-
-
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*ÚNICOS*__")
+	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][2])
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*GUARNICIONES*__")
+	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][3])
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*POSTRES*__")
+	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][4])
 
 def main():
 
