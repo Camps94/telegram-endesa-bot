@@ -56,8 +56,11 @@ def query_ddbb(ddbb, dia):
 
 def start(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
-	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola! Prueba. Soy tu bot de Mediterránea Catering. \
-		Haz click en /menu para saber que hay de comer hoy!")
+	name = update.effective_user["first_name"] or update.effective_user["username"]
+	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola {}! Soy el bot del Catering de Endesa. \
+		Haz click en /menu para saber que hay de comer hoy o mañana!".format(name))
+
+
 
 def menu(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
