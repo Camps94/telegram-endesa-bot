@@ -2,7 +2,6 @@
 
 from selenium import webdriver
 import time
-import sqlite3
 from datetime import datetime, timedelta
 import psycopg2
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
