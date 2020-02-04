@@ -90,7 +90,7 @@ def callback_alarm(update, context):
 
 def reminder(update,context):
    context.bot.send_message(chat_id = update.effective_chat.id , text='Daily reminder has been set! You\'ll get notified at 8 AM daily')
-   context.job_queue.run_daily(callback_alarm, context=update.message.chat_id,days=(0, 1, 2, 3, 4, 5, 6),time = time(hour = 23, minute = 46, second = 20))
+   context.job_queue.run_daily(callback_alarm, context=update.message.chat_id,days=(0, 1, 2, 3, 4, 5, 6), time = datetime.time(hour = 23, minute = 50, second = 20))
 
 
 def unknown(update, context):
