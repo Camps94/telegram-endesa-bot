@@ -89,7 +89,12 @@ def button(update, context):
 def unknown(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Lo siento pero no te entendí. Haz click en /menu para conocer el menu de hoy")
 
+def callback_alarm(context: telegram.ext.CallbackContext):
+  bot.send_message(chat_id=id, text='Hi, This is a daily reminder')
 
+def reminder(update,context):
+   bot.send_message(chat_id = update.effective_chat.id , text='Daily reminder has been set! You\'ll get notified at 8 AM daily')
+   context.job_queue.run_daily(callback_alarm, context=update.message.chat_id,days=(0, 1, 2, 3, 4, 5, 6),time = time(hour = 23, minute = 37, second = 10))
 
 def main():
 
@@ -105,6 +110,9 @@ def main():
 
 	unknown_handler = MessageHandler(Filters.command, unknown)
 	dispatcher.add_handler(unknown_handler)
+
+	start_handler = CommandHandler('reminder', reminder)
+	dispatcher.add_handler(start_handler)
 
 	unknown_handler2 = MessageHandler(Filters.text, unknown)
 	dispatcher.add_handler(unknown_handler2)
