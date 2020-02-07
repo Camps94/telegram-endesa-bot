@@ -21,7 +21,7 @@ PORT = int(os.environ.get("PORT", "8443"))
 
 updater = Updater(TOKEN, use_context=True)
 dispatcher = updater.dispatcher
-job = Updater.job_queue
+job = updater.job_queue
 
 def query_ddbb(ddbb, dia): 
 
