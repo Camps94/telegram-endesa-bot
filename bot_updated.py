@@ -107,9 +107,6 @@ def main():
 	start_handler = CommandHandler('menu', menu)
 	dispatcher.add_handler(start_handler)
 
-	start_handler = CommandHandler('reminder', reminder)
-	dispatcher.add_handler(start_handler)
-
 	job_minute = job.run_repeating(callback_minute, interval=60, first=0)
 
 
