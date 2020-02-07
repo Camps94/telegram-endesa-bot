@@ -87,7 +87,7 @@ def button(update, context):
 	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][4])
 
 
-def callback_minute(context: telegram.ext.CallbackContext, update):
+def callback_minute(update, context: telegram.ext.CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, 
                              text='One message every minute')
 
