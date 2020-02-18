@@ -10,10 +10,7 @@ import sys
 import psycopg2
 from datetime import datetime, timedelta, time
 
-import locale
-# Idioma "es-ES" (código para el español de España)
 
-locale.setlocale(local.LC_TIME, 'es_ES'
 
 # Enabling logging
 
@@ -89,10 +86,10 @@ def button(update, context):
 	fecha = datetime.now() + timedelta(delta)
 	mes = fecha.month
 	dia_num = fecha.day
-	day = fecha.strftime('%A')
 
 
-	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia}. {dia_num}/{mes}/2020".format(dia = day, dia_num=dia_num, mes=mes))
+
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*PRIMEROS*__")
 	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][0])
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*SEGUNDOS*__")
