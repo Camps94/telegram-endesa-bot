@@ -12,8 +12,8 @@ from datetime import datetime, timedelta, time
 
 import locale
 # Idioma "es-ES" (código para el español de España)
-locale.setlocale(locale.LC_ALL, 'es-ES')
 
+locale.setlocale(local.LC_TIME, 'es_ES'
 
 # Enabling logging
 
