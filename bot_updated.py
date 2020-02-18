@@ -46,7 +46,7 @@ def query_ddbb(ddbb, dia):
 			" ORDER BY fecha  DESC LIMIT 1 ;")"""
 
 		query = """"SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb} WHERE dia = {dia}
-				AND dia_num = {dia_num}""".format(ddbb=ddbb, dia=day, dia_num = dia_num )
+				AND dia_num = {dia_num} LIMIT 1""".format(ddbb=ddbb, dia=day, dia_num = dia_num )
 
 
 		cursor.execute(query)
