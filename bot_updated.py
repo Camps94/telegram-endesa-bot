@@ -83,7 +83,7 @@ def menu(update, context):
 def button(update, context):
 	query = update.callback_query
 	data = query_ddbb('daily_menu', query.data)
-	delta = int(data)
+	delta = int(query.data)
 	fecha = datetime.now() + timedelta(delta)
 	mes = fecha.month
 	dia_num = fecha.day
