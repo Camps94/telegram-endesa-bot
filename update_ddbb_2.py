@@ -20,9 +20,11 @@ driver.find_element_by_xpath("/html/body/div[1]/div/div/div/div/form/div[3]/butt
 time.sleep(5)
 driver.find_element_by_xpath("/html/body/div[1]/div[1]/div/ul/li[4]/button").click()
 time.sleep(15)
-driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div[3]/div[2]/div/button[1]").click()
-fecha = datetime.now() + timedelta(0)
+driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div[3]/div[2]/div/button[5]").click()
+fecha = datetime.now() + timedelta(4)
 day = fecha.strftime('%A')
+mes = datetime.now().month
+dia_num = datetime.now().day
 time.sleep(10)
 divisions = driver.find_elements_by_class_name('scrollable')
 
@@ -72,23 +74,15 @@ for elm in divisions:
 		total = [ x + ': ' + y for x, y in zip(Tipos, Segundos)]
 		segundos_v = ' | '.join(total) 
 	elif list[integer] == 'Guarniciones':
-		for cat in category:
-			catg = cat.text
-			Tipos.append(catg)
 		for element in content:
 			dish = (element.text).title()
 			Guarniciones.append(dish)
-		total = [ x + ': ' + y for x, y in zip(Tipos, Guarniciones)]
-		guarniciones_v = ' | '.join(total) 
+		guarniciones_v = ' | '.join(Guarniciones) 
 	elif list[integer] == 'Postre':
-		for cat in category:
-			catg = cat.text
-			Tipos.append(catg)
 		for element in content:
 			dish = (element.text).title()
 			Postre.append(dish)
-		total = [ x + ': ' + y for x, y in zip(Tipos, Postre)]
-		postre_v = ' | '.join(total) 
+		postre_v = ' | '.join(Postre) 
 	elif list[integer] == 'Bebidas':
 		for cat in category:
 			catg = cat.text
@@ -112,8 +106,8 @@ try:
 	                                  database = "d9iffrf6gikj6a")
 
 	cursor = connection.cursor()
-	cursor.execute("INSERT INTO daily_menu (fecha, dia, unicos, primeros, segundos, guarniciones,postres, bebidas ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)", 
-		(fecha, day, unicos_v, primeros_v, segundos_v, guarniciones_v, postre_v, bebidas_v))
+	cursor.execute("INSERT INTO daily_menu (mes , dia_num, fecha, dia, unicos, primeros, segundos, guarniciones,postres, bebidas ) VALUES (%s, %s, %s,%s,%s,%s,%s,%s,%s,%s)", 
+		(mes, dia_num, fecha, day, unicos_v, primeros_v, segundos_v, guarniciones_v, postre_v, bebidas_v))
 	connection.commit()
 
 

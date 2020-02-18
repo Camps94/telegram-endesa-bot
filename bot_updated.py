@@ -30,6 +30,8 @@ def query_ddbb(ddbb, dia):
 	try:
 
 		fecha = datetime.now() + timedelta(delta)
+		mes = fecha.month
+		dia_num = fecha.day
 		day = fecha.strftime('%A')
 		day = "'" + day + "'"
 		connection = psycopg2.connect(user = "lstzeuvfrgwgva",
@@ -38,7 +40,9 @@ def query_ddbb(ddbb, dia):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		query = "SELECT " + "primeros, segundos, unicos, guarniciones, postres" + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
+		query = ("SELECT primeros, segundos, unicos, guarniciones, postres"  
+			" FROM " +  ddbb + " WHERE dia = " + day + " AND dia_num =  " + dia_num
+			" ORDER BY fecha  DESC LIMIT 1 ;")
 		cursor.execute(query)
 		data = cursor.fetchall()
 
@@ -99,8 +103,8 @@ def main():
 	start_handler = CommandHandler('start', start)
 	dispatcher.add_handler(start_handler)
 
-	start_handler = CommandHandler('menu', menu)
-	dispatcher.add_handler(start_handler)
+	menu_handler = CommandHandler('menu', menu)
+	dispatcher.add_handler(menu_handler)
 
 	unknown_handler = MessageHandler(Filters.command, unknown)
 	dispatcher.add_handler(unknown_handler)
