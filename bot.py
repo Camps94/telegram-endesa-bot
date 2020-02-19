@@ -86,7 +86,7 @@ def horario(update, context):
 
 def ocupacion(update, context):
 
-	driver = webdriver.Chrome(execution_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
+	driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
 	#driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
 	link = 'http://med-menuonline.com/endesaOcupacion.php?max=850&orientacion=horizontal'
 	driver.get(link)
