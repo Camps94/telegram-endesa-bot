@@ -14,7 +14,7 @@ from selenium.common.exceptions import NoSuchElementException, WebDriverExceptio
 from selenium.webdriver.chrome.options import Options
 import os
 
-CHROMEDRIVER_PATH = os.environ.get('CHROMEDRIVER_PATH', '/usr/local/bin/chromedriver')
+CHROMEDRIVER_PATH = os.environ.get('CHROMEDRIVER_PATH', 'chromedriver')
 GOOGLE_CHROME_BIN = os.environ.get('GOOGLE_CHROME_BIN', '/usr/bin/google-chrome')
 options = Options()
 options.binary_location = GOOGLE_CHROME_BIN
