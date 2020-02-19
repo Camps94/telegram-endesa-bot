@@ -75,6 +75,15 @@ def start(update, context):
 def plano(update, context):
 	context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('images/plano.jpg', 'rb'))
 
+def horario(update, context):
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*Horario: Lunes - Viernes*__")
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__Cafetería:__ 9.00 - 16.00H")
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__Restaurante:__ 7.15 - 9.00H / 14.00 - 16.00H")
+
+def tips(update, context):
+	context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('images/alimentos.jpg', 'rb'))
+
+
 
 def menu(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
@@ -125,6 +134,12 @@ def main():
 
 	plano_handler = CommandHandler('plano', plano)
 	dispatcher.add_handler(plano_handler)
+
+	tips_handler = CommandHandler('tips', tips)
+	dispatcher.add_handler(tips_handler)
+
+	horario_handler = CommandHandler('horario', horario)
+	dispatcher.add_handler(horario_handler)
 
 	unknown_handler = MessageHandler(Filters.command, unknown)
 	dispatcher.add_handler(unknown_handler)
