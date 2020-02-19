@@ -11,16 +11,17 @@ import psycopg2
 from datetime import datetime, timedelta, time
 from selenium import webdriver
 import os
+from selenium.webdriver.chrome.options import Options
 
 
-
-
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--disable-gpu')
-chrome_options.add_argument('--no-sandbox')
-chrome_options.binary_location = GOOGLE_CHROME_PATH
-browser = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
-
+options = Options()
+options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')
+options.add_argument('--no-sandbox')
+options.add_argument('--remote-debugging-port=9222')
+options.add_argument('--proxy-server='+proxy)
+browser = webdriver.Chrome(executable_path=str(os.environ.get('CHROMEDRIVER_PATH')), chrome_options=options)
 
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -90,7 +91,7 @@ def ocupacion(update, context):
 
 	#driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
 	link = 'http://med-menuonline.com/endesaOcupacion.php?max=850&orientacion=horizontal'
-	driver.get(link)
+	browser.get(link)
 	occupancy = driver.find_element_by_tag_name('text.ct-label').text
 	print('\n' , occupancy)
 	#driver.close() 
