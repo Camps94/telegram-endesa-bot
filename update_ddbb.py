@@ -20,11 +20,11 @@ driver.find_element_by_xpath("/html/body/div[1]/div/div/div/div/form/div[3]/butt
 time.sleep(5)
 driver.find_element_by_xpath("/html/body/div[1]/div[1]/div/ul/li[4]/button").click()
 time.sleep(15)
-driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div[3]/div[2]/div/button[5]").click()
-fecha = datetime.now() + timedelta(4)
+driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div[3]/div[2]/div/button[3]").click()
+fecha = datetime.now() + timedelta(2)
 day = fecha.strftime('%A')
-mes = datetime.now().month
-dia_num = datetime.now().day
+mes = fecha.month
+dia_num = fecha.day
 time.sleep(10)
 divisions = driver.find_elements_by_class_name('scrollable')
 
@@ -47,14 +47,10 @@ for elm in divisions:
 	category = elm.find_elements_by_css_selector("span.text-uppercase.font-14.text-green")
 	Tipos = []
 	if list[integer] == 'Unicos':
-		for cat in category:
-			catg = cat.text
-			Tipos.append(catg)
 		for element in content:
 			dish = (element.text).title()
 			Unicos.append(dish)
-		total = [ x + ': ' + y for x, y in zip(Tipos, Unicos)]
-		unicos_v = '  '.join(total) 
+		unicos_v = '\n'.join(Unicos) 
 	elif list[integer] == 'Primeros':
 		for cat in category:
 			catg = cat.text
@@ -72,7 +68,7 @@ for elm in divisions:
 			dish = (element.text).title()
 			Segundos.append(dish)
 		total = [ x + ': ' + y for x, y in zip(Tipos, Segundos)]
-		segundos_v = ' | '.join(total) 
+		segundos_v = '\n'.join(total) 
 	elif list[integer] == 'Guarniciones':
 		for element in content:
 			dish = (element.text).title()
