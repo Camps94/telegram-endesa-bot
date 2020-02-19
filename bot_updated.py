@@ -36,6 +36,7 @@ def query_ddbb(ddbb, dia):
 		dia_num = fecha.day
 		day = fecha.strftime('%A')
 		day = "'" + day + "'"
+		dia_num = "'" + dia_num + "'"
 		connection = psycopg2.connect(user = "lstzeuvfrgwgva",
 	                                  password = "705cba1d67eefffd029de6bb3f7e1dfdd2b9f83cf8711d6bfb466e734c545a6d",
 	                                  host = "ec2-54-75-249-16.eu-west-1.compute.amazonaws.com",
@@ -44,8 +45,8 @@ def query_ddbb(ddbb, dia):
 		cursor = connection.cursor()
 		#query = "SELECT " + "primeros, segundos, unicos, guarniciones, postres" + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
 		
-		query = """"SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb} WHERE dia = {day}
-				AND dia_num = {dia_num}""".format(ddbb=ddbb, dia=day, dia_num = dia_num)
+		query = """"SELECT 'primeros', 'segundos', 'unicos', 'guarniciones', 'postres' FROM {ddbb} WHERE 'dia' = {day}
+				AND 'dia_num' = {dia_num}""".format(ddbb=ddbb, dia=day, dia_num = dia_num)
 
 		cursor.execute(query)
 		data = cursor.fetchall()
