@@ -21,7 +21,6 @@ options.binary_location = GOOGLE_CHROME_BIN
 options.add_argument('--disable-gpu')
 options.add_argument('--no-sandbox')
 options.headless = True
-driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
 
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -87,14 +86,12 @@ def horario(update, context):
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__Restaurante:__ 7\\.15 \\- 9\\.00H / 14\\.00 \\- 16\\.00H")
 
 def ocupacion(update, context):
-
-
-	#driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
+	driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
 	link = 'http://med-menuonline.com/endesaOcupacion.php?max=850&orientacion=horizontal'
 	driver.get(link)
 	occupancy = driver.find_element_by_tag_name('text.ct-label').text
 	print('\n' , occupancy)
-	#driver.close() 
+	driver.close() 
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text=occupancy)
 
 def tips(update, context):
