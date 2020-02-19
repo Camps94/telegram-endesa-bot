@@ -72,6 +72,8 @@ def start(update, context):
 	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola {}! Soy el bot del Catering de Endesa.\
 		Haz click en /menu para saber que hay de comer hoy o mañana!".format(name))
 
+def plano(update, context):
+	context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('images/plano.jpg', 'rb'))
 
 
 def menu(update, context):
@@ -94,7 +96,7 @@ def button(update, context):
 
 
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
-	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*PRIMEROS fsdf \n Hola*__")
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*PRIMEROS*__")
 	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][0])
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*SEGUNDOS*__")
 	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][1])
@@ -120,6 +122,9 @@ def main():
 
 	start_handler = CommandHandler('menu', menu)
 	dispatcher.add_handler(start_handler)
+
+	plano_handler = CommandHandler('plano', plano)
+	dispatcher.add_handler(plano_handler)
 
 	unknown_handler = MessageHandler(Filters.command, unknown)
 	dispatcher.add_handler(unknown_handler)
