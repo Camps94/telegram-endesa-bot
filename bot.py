@@ -13,12 +13,11 @@ from selenium import webdriver
 
 # Enabling logging
 
-GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
-CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
-chrome_options = webdriver.ChromeOptions()
+chrome_options = Options()
+chrome_options.binary_location = GOOGLE_CHROME_BIN
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
-chrome_options.binary_location = GOOGLE_CHROME_PATH
+driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
 
 
 logging.basicConfig(level=logging.INFO,
@@ -86,7 +85,6 @@ def horario(update, context):
 
 def ocupacion(update, context):
 
-	driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
 	#driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
 	link = 'http://med-menuonline.com/endesaOcupacion.php?max=850&orientacion=horizontal'
 	driver.get(link)
