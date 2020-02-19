@@ -9,8 +9,7 @@ import os
 import sys
 import psycopg2
 from datetime import datetime, timedelta, time
-
-
+from selenium import webdriver
 
 # Enabling logging
 
@@ -44,9 +43,6 @@ def query_ddbb(ddbb, dia):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		#query = "SELECT " + "primeros, segundos, unicos, guarniciones, postres" + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
-
-		#query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE dia = {day} AND dia_num = {dia_num} ORDER BY fecha  DESC LIMIT 1 ;""".format(ddbb=ddbb, day=day, dia_num = dia_num)
 		query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE dia = {day} AND dia_num = {dia_num};""".format(ddbb=ddbb, day=day, dia_num = dia_num)
 
 		cursor.execute(query)
@@ -80,10 +76,17 @@ def horario(update, context):
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__Cafetería:__ 9\\.00 \\- 16\\.00H")
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__Restaurante:__ 7\\.15 \\- 9\\.00H / 14\\.00 \\- 16\\.00H")
 
+def ocupacion(update, context):
+	driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
+	link = 'http://med-menuonline.com/endesaOcupacion.php?max=850&orientacion=horizontal'
+	driver.get(link)
+	occupancy = driver.find_element_by_tag_name('text.ct-label').text
+	print('\n' , occupancy)
+	driver.close() 
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text=occupancy)
+
 def tips(update, context):
 	context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('images/alimentos.jpg', 'rb'))
-
-
 
 def menu(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
@@ -137,6 +140,9 @@ def main():
 
 	tips_handler = CommandHandler('tips', tips)
 	dispatcher.add_handler(tips_handler)
+
+	ocupacion_handler = CommandHandler('ocupacion', ocupacion)
+	dispatcher.add_handler(ocupacion_handler)
 
 	horario_handler = CommandHandler('horario', horario)
 	dispatcher.add_handler(horario_handler)
