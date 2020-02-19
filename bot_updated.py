@@ -34,6 +34,7 @@ def query_ddbb(ddbb, dia):
 		fecha = datetime.now() + timedelta(delta)
 		mes = fecha.month
 		dia_num = fecha.day
+		dia_num = str(dia_num)
 		day = fecha.strftime('%A')
 		day = "'" + day + "'"
 		dia_num = "'" + dia_num + "'"
