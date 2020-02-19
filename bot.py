@@ -13,14 +13,13 @@ from selenium import webdriver
 import os
 from selenium.webdriver.chrome.options import Options
 
-
-chrome_bin = os.environ.get('GOOGLE_CHROME_SHIN', "chromedriver")
-options = webdriver.ChromeOptions()
-options.binary_location = chrome_bin
-options.add_argument("--disable-gpu")
-options.add_argument("--no-sandbox")
-options.add_argument('headless')
-options.add_argument('window-size=1200x600')
+CHROMEDRIVER_PATH = os.environ.get('CHROMEDRIVER_PATH', '/usr/local/bin/chromedriver')
+GOOGLE_CHROME_BIN = os.environ.get('GOOGLE_CHROME_BIN', '/usr/bin/google-chrome')
+options = Options()
+options.binary_location = GOOGLE_CHROME_BIN
+options.add_argument('--disable-gpu')
+options.add_argument('--no-sandbox')
+options.headless = True
 driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
 
 logging.basicConfig(level=logging.INFO,
