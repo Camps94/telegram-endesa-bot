@@ -35,7 +35,7 @@ def query_ddbb(ddbb, dia):
 		mes = fecha.month
 		dia_num = fecha.day
 		day = fecha.strftime('%A')
-		#day = "'" + day + "'"
+		day = "'" + day + "'"
 		connection = psycopg2.connect(user = "lstzeuvfrgwgva",
 	                                  password = "705cba1d67eefffd029de6bb3f7e1dfdd2b9f83cf8711d6bfb466e734c545a6d",
 	                                  host = "ec2-54-75-249-16.eu-west-1.compute.amazonaws.com",
