@@ -10,13 +10,15 @@ import sys
 import psycopg2
 from datetime import datetime, timedelta, time
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, WebDriverException
-from selenium.webdriver.chrome.options import Options
 import os
 
-CHROMEDRIVER_PATH = os.environ.get('CHROMEDRIVER_PATH', '/usr/local/bin/chromedriver')
-GOOGLE_CHROME_BIN = os.environ.get('GOOGLE_CHROME_BIN', '/usr/bin/google-chrome')
-
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
+CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.binary_location = GOOGLE_CHROME_PATH
+driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
 
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -82,21 +84,14 @@ def horario(update, context):
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__Restaurante:__ 7\\.15 \\- 9\\.00H / 14\\.00 \\- 16\\.00H")
 
 def ocupacion(update, context):
-	options = Options()
-	options.binary_location = GOOGLE_CHROME_BIN
-	options.add_argument('--disable-gpu')
-	options.add_argument('--no-sandbox')
-	options.headless = True
-	print('Building chrome driver...')
 
-	driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
 
 	#driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
 	link = 'http://med-menuonline.com/endesaOcupacion.php?max=850&orientacion=horizontal'
 	driver.get(link)
 	occupancy = driver.find_element_by_tag_name('text.ct-label').text
 	print('\n' , occupancy)
-	driver.close() 
+	#driver.close() 
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text=occupancy)
 
 def tips(update, context):
