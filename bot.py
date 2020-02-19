@@ -76,9 +76,9 @@ def plano(update, context):
 	context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('images/plano.jpg', 'rb'))
 
 def horario(update, context):
-	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*Horario: Lunes \\- Viernes*__")
-	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__Cafetería:__ 9.00 \\- 16.00H")
-	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__Restaurante:__ 7.15 \\- 9.00H / 14.00 - 16.00H")
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*Horario*: Lunes \\- Viernes__")
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__Cafetería:__ 9\\.00 \\- 16\\.00H")
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__Restaurante:__ 7\\.15 \\- 9\\.00H / 14\\.00 - 16\\.00H")
 
 def tips(update, context):
 	context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('images/alimentos.jpg', 'rb'))
