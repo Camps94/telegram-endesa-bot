@@ -46,7 +46,8 @@ def query_ddbb(ddbb, dia):
 		cursor = connection.cursor()
 		#query = "SELECT " + "primeros, segundos, unicos, guarniciones, postres" + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
 
-		query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE dia = {day}  ORDER BY fecha  DESC LIMIT 1 ;""".format(ddbb=ddbb, day=day)
+		#query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE dia = {day} AND dia_num = {dia_num} ORDER BY fecha  DESC LIMIT 1 ;""".format(ddbb=ddbb, day=day, dia_num = dia_num)
+		query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE dia = {day} AND dia_num = {dia_num};""".format(ddbb=ddbb, day=day, dia_num = dia_num)
 
 		cursor.execute(query)
 		data = cursor.fetchall()
