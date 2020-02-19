@@ -47,7 +47,7 @@ def query_ddbb(ddbb, dia):
 		#query = "SELECT " + "primeros, segundos, unicos, guarniciones, postres" + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
 		
 		query = """"SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb} WHERE dia = {day} 
-					ORDER BY fecha DESC LIMIT 1""".format(ddbb=ddbb, dia=day)
+					ORDER BY fecha DESC LIMIT 1;""".format(ddbb=ddbb, dia=day)
 
 		cursor.execute(query)
 		data = cursor.fetchall()
@@ -69,7 +69,7 @@ def query_ddbb(ddbb, dia):
 def start(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
 	name = update.effective_user["first_name"] or update.effective_user["username"]
-	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola {}! Soy el bot del Catering de Endesa. \
+	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola {}! Soy el bot del Catering de Endesa.\
 		Haz click en /menu para saber que hay de comer hoy o mañana!".format(name))
 
 
