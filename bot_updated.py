@@ -45,10 +45,11 @@ def query_ddbb(ddbb, dia):
 		#query = "SELECT " + "primeros, segundos, unicos, guarniciones, postres" + " FROM " +  ddbb + " WHERE dia = " + day + " ORDER BY fecha  DESC LIMIT 1 ;"
 		
 		query = """"SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb} WHERE dia = {day}
-				AND dia_num = {dia_num} LIMIT 1""".format(ddbb=ddbb, dia=day, dia_num = dia_num )
+				AND dia_num = {dia_num}""".format(ddbb=ddbb, dia=day, dia_num = dia_num)
 
 		cursor.execute(query)
 		data = cursor.fetchall()
+		print(data)
 
 	except (Exception, psycopg2.Error) as error :
 		if(connection):
