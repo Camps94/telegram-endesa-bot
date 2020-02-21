@@ -41,6 +41,7 @@ def query_ddbb(ddbb, dia):
 
 		fecha = datetime.now() + timedelta(delta)
 		mes = fecha.month
+		mes = str(mes)
 		dia_num = fecha.day
 		dia_num = str(dia_num)
 		day = fecha.strftime('%A')
@@ -52,7 +53,8 @@ def query_ddbb(ddbb, dia):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE dia = {day} AND dia_num = {dia_num};""".format(ddbb=ddbb, day=day, dia_num = dia_num)
+		#query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE dia = {day} AND dia_num = {dia_num};""".format(ddbb=ddbb, day=day, dia_num = dia_num)
+		query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE mes = {mes} AND dia_num = {dia_num};""".format(ddbb=ddbb, mes=mes, dia_num = dia_num)
 
 		cursor.execute(query)
 		data = cursor.fetchall()
