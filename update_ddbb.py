@@ -7,15 +7,29 @@ import psycopg2
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import requests
 import logging
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from selenium.webdriver.chrome.options import Options
 import os
 import sys
 
-driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
+CHROMEDRIVER_PATH = os.environ.get('CHROMEDRIVER_PATH', 'chromedriver')
+GOOGLE_CHROME_BIN = os.environ.get('GOOGLE_CHROME_BIN', '/usr/bin/google-chrome')
+options = Options()
+options.binary_location = GOOGLE_CHROME_BIN
+options.add_argument('--disable-gpu')
+options.add_argument('--no-sandbox')
+options.headless = True
+
+
+email = os.getenv("EMAIL", 'eduardo.garcia2@enel.com')
+password = os.getenv("PASSWORD", "123456")
+driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
+#driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
 link = 'https://mediterranea.online/client/courses'
 driver.get(link)
-
-driver.find_element_by_id('email').send_keys('eduardo.garcia2@enel.com')
-driver.find_element_by_id('password').send_keys("123456")
+driver.find_element_by_id('email').send_keys(email)
+driver.find_element_by_id('password').send_keys(password)
 driver.find_element_by_xpath("/html/body/div[1]/div/div/div/div/form/div[3]/button").click()
 time.sleep(5)
 driver.find_element_by_xpath("/html/body/div[1]/div[1]/div/ul/li[4]/button").click()
@@ -100,12 +114,17 @@ try:
 	                                  host = "ec2-54-75-249-16.eu-west-1.compute.amazonaws.com",
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
-
 	cursor = connection.cursor()
-	cursor.execute("INSERT INTO daily_menu (mes , dia_num, fecha, dia, unicos, primeros, segundos, guarniciones,postres, bebidas ) VALUES (%s, %s, %s,%s,%s,%s,%s,%s,%s,%s)", 
+	valor = datetime.now().strftime('%A')
+	if valor in ['Thursday', 'Friday']:
+		response = 'Restaurante cerrado'
+		cursor.execute("INSERT INTO daily_menu (mes , dia_num, fecha, dia, unicos, primeros, segundos, guarniciones,postres, bebidas ) VALUES (%s, %s, %s,%s,%s,%s,%s,%s,%s,%s)", 
+		(mes, dia_num, fecha, day, response, response, response, response, response, response))
+	else:
+		cursor.execute("INSERT INTO daily_menu (mes , dia_num, fecha, dia, unicos, primeros, segundos, guarniciones,postres, bebidas ) VALUES (%s, %s, %s,%s,%s,%s,%s,%s,%s,%s)", 
 		(mes, dia_num, fecha, day, unicos_v, primeros_v, segundos_v, guarniciones_v, postre_v, bebidas_v))
+	
 	connection.commit()
-
 
 finally:
     #closing database connection.

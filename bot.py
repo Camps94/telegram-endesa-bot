@@ -53,9 +53,7 @@ def query_ddbb(ddbb, dia):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		#query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE dia = {day} AND dia_num = {dia_num};""".format(ddbb=ddbb, day=day, dia_num = dia_num)
 		query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE mes = {mes} AND dia_num = {dia_num};""".format(ddbb=ddbb, mes=mes, dia_num = dia_num)
-
 		cursor.execute(query)
 		data = cursor.fetchall()
 		print(data)
@@ -92,7 +90,6 @@ def ocupacion(update, context):
 	link = 'http://med-menuonline.com/endesaOcupacion.php?max=850&orientacion=horizontal'
 	driver.get(link)
 	occupancy = driver.find_element_by_tag_name('text.ct-label').text
-	print('\n' , occupancy)
 	driver.close() 
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text=occupancy)
 
