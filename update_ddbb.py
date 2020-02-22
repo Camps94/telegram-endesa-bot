@@ -22,8 +22,8 @@ options.add_argument('--no-sandbox')
 options.headless = True
 
 
-email = os.getenv("EMAIL", 'eduardo.garcia2@enel.com')
-password = os.getenv("PASSWORD", "123456")
+email = os.getenv("EMAIL")
+password = os.getenv("PASSWORD")
 driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
 #driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
 link = 'https://mediterranea.online/client/courses'
