@@ -108,9 +108,9 @@ for elm in divisions:
 
 try:
 
-
+	password_ddbb = os.getenv("PASSWORD_DATABASE")
 	connection = psycopg2.connect(user = "lstzeuvfrgwgva",
-	                                  password = "705cba1d67eefffd029de6bb3f7e1dfdd2b9f83cf8711d6bfb466e734c545a6d",
+	                                  password = password_ddbb,
 	                                  host = "ec2-54-75-249-16.eu-west-1.compute.amazonaws.com",
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
