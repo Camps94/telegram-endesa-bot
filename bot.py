@@ -38,7 +38,7 @@ def query_ddbb(ddbb, dia):
 	data = []
 	delta = int(dia)
 	try:
-
+		password = os.getenv("PASSWORD_DATABASE")
 		fecha = datetime.now() + timedelta(delta)
 		mes = fecha.month
 		mes = str(mes)
@@ -48,7 +48,7 @@ def query_ddbb(ddbb, dia):
 		day = "'" + day + "'"
 		dia_num = "'" + dia_num + "'"
 		connection = psycopg2.connect(user = "lstzeuvfrgwgva",
-	                                  password = "705cba1d67eefffd029de6bb3f7e1dfdd2b9f83cf8711d6bfb466e734c545a6d",
+	                                  password = password,
 	                                  host = "ec2-54-75-249-16.eu-west-1.compute.amazonaws.com",
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
