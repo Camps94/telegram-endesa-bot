@@ -81,9 +81,9 @@ def plano(update, context):
 	context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('images/plano.jpg', 'rb'))
 
 def horario(update, context):
-	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*HorarioTEST*: Lunes \\- Viernes__")
-	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__Cafetería:__ 9\\.00 \\- 16\\.00H")
-	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__Restaurante:__ 7\\.15 \\- 9\\.00H / 14\\.00 \\- 16\\.00H")
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*Horario*: Lunes \\- Viernes__")
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*Cafetería:* 9\\.00 \\- 16\\.00H")
+	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*Restaurante:* 7\\.15 \\- 9\\.00H / 14\\.00 \\- 16\\.00H")
 
 def ocupacion(update, context):
 	driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
