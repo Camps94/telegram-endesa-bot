@@ -1,2 +1,2 @@
 # telegram-endesa-bot
-Bot to get the daily meny from Endesa Headquarters
+Bot to get the daily menu from Endesa Headquarters
