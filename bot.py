@@ -76,9 +76,9 @@ def start(update, context):
 	name = update.effective_user["first_name"] or update.effective_user["username"]
 	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola {}! Soy el bot del Catering de Endesa."\
 		"Haz click en /menu para saber que hay de comer hoy o mañana!\n"\
-		"Otras consultas disponibles:"\
+		"Otras consultas disponibles:\n"\
 		"Horario: /horario\n"\
-		"Ocupación del restaurante en tiempo real: /ocupacion\n"\
+		"Ocupación en tiempo real: /ocupacion\n"\
 		"Distribución de los platos: /plano".format(name))
 
 def plano(update, context):
