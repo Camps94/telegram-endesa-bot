@@ -74,12 +74,12 @@ def query_ddbb(ddbb, dia):
 def start(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
 	name = update.effective_user["first_name"] or update.effective_user["username"]
-	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola {}!"\
+	context.bot.send_message(chat_id=update.effective_chat.id, text="Hola {}! "\
 		"Haz click en /menu para saber que hay de comer!\n"\
 		"Otras consultas disponibles:\n"\
-		"Horario: /horario\n"\
-		"Ocupación en tiempo real: /ocupacion\n"\
-		"Distribución de los platos: /plano".format(name))
+		"*Horario:* /horario\n"\
+		"*Ocupación del restaurante:* /ocupacion\n"\
+		"*Distribución:* /plano".format(name))
 
 def plano(update, context):
 	context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('images/plano.jpg', 'rb'))
