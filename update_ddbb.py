@@ -21,13 +21,13 @@ options.headless = True
 
 
 email = os.getenv("EMAIL")
-password = os.getenv("PASSWORD")
+#password = os.getenv("PASSWORD")
 driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
 #driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
 link = 'https://mediterranea.online/client/courses'
 driver.get(link)
 driver.find_element_by_id('email').send_keys(email)
-driver.find_element_by_id('password').send_keys(password)
+driver.find_element_by_id('password').send_keys('123456')
 driver.find_element_by_xpath("/html/body/div[1]/div/div/div/div/form/div[3]/button").click()
 time.sleep(5)
 driver.find_element_by_xpath("/html/body/div[1]/div[1]/div/ul/li[4]/button").click()
