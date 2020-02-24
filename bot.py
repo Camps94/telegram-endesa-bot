@@ -105,9 +105,7 @@ def menu(update, context):
 	#keyboard = [[InlineKeyboardButton("Ayer", callback_data='-1')], 
 				#[InlineKeyboardButton("Hoy", callback_data='0')], 
 				#[InlineKeyboardButton("Mañana", callback_data='1')]]"""
-	keyboard = [[telegram.KeyboardButton("Ayer")],
-          [telegram.KeyboardButton("Hoy")], 
-		[telegram.KeyboardButton("Mañana")]]
+	keyboard = [[telegram.KeyboardButton("Ayer")], [telegram.KeyboardButton("Hoy")], [telegram.KeyboardButton("Mañana")]]
 	
 	#reply_markup = InlineKeyboardMarkup(keyboard)
 	reply_markup = telegram.ReplyKeyboardMarkup(keyboard)
