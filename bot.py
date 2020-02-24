@@ -120,7 +120,7 @@ def button(update, context):
 	day = fecha.strftime('%A')
 	if day in ['Saturday', 'Sunday']:
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
-		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*Restaurance Cerrado")
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*Restaurance Cerrado*")
 	else:
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*PRIMEROS*__")
