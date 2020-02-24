@@ -102,12 +102,17 @@ def tips(update, context):
 
 def menu(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
-	keyboard = [[InlineKeyboardButton("Ayer", callback_data='-1')], 
-				[InlineKeyboardButton("Hoy", callback_data='0')], 
-				[InlineKeyboardButton("Mañana", callback_data='1')]]
-
-	reply_markup = InlineKeyboardMarkup(keyboard)
+	#keyboard = [[InlineKeyboardButton("Ayer", callback_data='-1')], 
+				#[InlineKeyboardButton("Hoy", callback_data='0')], 
+				#[InlineKeyboardButton("Mañana", callback_data='1')]]"""
+	keyboard = [[telegram.KeyboardButton("Ayer", callback_data='-1')],
+          [telegram.KeyboardButton("Hoy", callback_data='0')], 
+		[telegram.KeyboardButton("Mañana", callback_data='1')]]
+	
+	#reply_markup = InlineKeyboardMarkup(keyboard)
+	reply_markup = telegram.ReplyKeyboardMarkup(keyboard)
 	update.message.reply_text('De que día quieres saber el menu?', reply_markup=reply_markup)
+	
 
 def button(update, context):
 	query = update.callback_query
