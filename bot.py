@@ -120,18 +120,18 @@ def button(update, context):
 	day = fecha.strftime('%A')
 	if day in ['Saturday', 'Sunday']:
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
-		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*Restaurance Cerrado*")
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*Restaurance: Cerrado*")
 	else:
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
-		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*PRIMEROS*__")
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="_*PRIMEROS*_")
 		context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][0])
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="_*SEGUNDOS*_")
 		context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][1])
-		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*ÚNICOS*__")
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="_*ÚNICOS*_")
 		context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][2])
-		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*GUARNICIONES*__")
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="_*GUARNICIONES*_")
 		context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][3])
-		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="__*POSTRES*__")
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="_*POSTRES*_")
 		context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][4])
 
 def unknown(update, context):
