@@ -105,12 +105,14 @@ def menu(update, context):
 	#keyboard = [[InlineKeyboardButton("Ayer", callback_data='-1')], 
 				#[InlineKeyboardButton("Hoy", callback_data='0')], 
 				#[InlineKeyboardButton("Mañana", callback_data='1')]]"""
-	keyboard = [[telegram.KeyboardButton("Ayer", callback_data='-1')],
-          [telegram.KeyboardButton("Hoy", callback_data='0')], 
-		[telegram.KeyboardButton("Mañana", callback_data='1')]]
+	keyboard = [[telegram.KeyboardButton("Ayer")],
+          [telegram.KeyboardButton("Hoy")], 
+		[telegram.KeyboardButton("Mañana")]]
 	
 	#reply_markup = InlineKeyboardMarkup(keyboard)
 	reply_markup = telegram.ReplyKeyboardMarkup(keyboard)
+	if reply_markup == 'Hoy':
+		reply_markup = '0'
 	update.message.reply_text('De que día quieres saber el menu?', reply_markup=reply_markup)
 	
 
