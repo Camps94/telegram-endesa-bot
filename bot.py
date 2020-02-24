@@ -111,8 +111,6 @@ def menu(update, context):
 	
 	#reply_markup = InlineKeyboardMarkup(keyboard)
 	reply_markup = telegram.ReplyKeyboardMarkup(keyboard)
-	if reply_markup == 'Hoy':
-		reply_markup = '0'
 	print (reply_markup)
 	update.message.reply_text('De que día quieres saber el menu?', reply_markup=reply_markup)
 	
