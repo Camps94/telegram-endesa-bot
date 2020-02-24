@@ -103,8 +103,8 @@ def tips(update, context):
 def menu(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
 	keyboard = [[InlineKeyboardButton("Ayer", callback_data='-1')], 
-				#[InlineKeyboardButton("Hoy", callback_data='0')], 
-				#[InlineKeyboardButton("Mañana", callback_data='1')]]"""
+				[InlineKeyboardButton("Hoy", callback_data='0')], 
+				[InlineKeyboardButton("Mañana", callback_data='1')]]
 	reply_markup = InlineKeyboardMarkup(keyboard)
 	update.message.reply_text('De que día quieres saber el menu?', reply_markup=reply_markup)
 	
