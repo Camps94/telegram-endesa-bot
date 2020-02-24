@@ -1,6 +1,4 @@
 #!/usr/local/opt/python/libexec/bin/python
-
-from selenium import webdriver
 import time
 from datetime import datetime, timedelta
 import psycopg2
