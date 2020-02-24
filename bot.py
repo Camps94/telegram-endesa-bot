@@ -108,7 +108,7 @@ def menu(update, context):
 	keyboard = [[telegram.KeyboardButton('Ayer')], [telegram.KeyboardButton('Hoy')], [telegram.KeyboardButton('Mañana')]]
 	
 	#reply_markup = InlineKeyboardMarkup(keyboard)
-	reply_markup = telegram.ReplyKeyboardMarkup(keyboard)
+	reply_markup = telegram.ReplyKeyboardMarkup(keyboard, one_time_keyboard=False, resize_keyboard=True)
 	update.message.reply_text('De que día quieres saber el menu?', reply_markup=reply_markup)
 	
 
