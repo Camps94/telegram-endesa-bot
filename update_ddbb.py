@@ -32,8 +32,8 @@ driver.find_element_by_xpath("/html/body/div[1]/div/div/div/div/form/div[3]/butt
 time.sleep(5)
 driver.find_element_by_xpath("/html/body/div[1]/div[1]/div/ul/li[4]/button").click()
 time.sleep(15)
-driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div[3]/div[2]/div/button[2]").click()
-fecha = datetime.now() + timedelta(1)
+driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div[3]/div[2]/div/button[3]").click()
+fecha = datetime.now() + timedelta(2)
 day = fecha.strftime('%A')
 mes = fecha.month
 dia_num = fecha.day
