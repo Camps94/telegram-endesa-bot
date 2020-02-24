@@ -131,7 +131,7 @@ def button(update, context):
 	context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][4])
 
 def unknown(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Lo siento pero no te entendí. Haz click en /start para volver a la pantalla principal")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Lo siento pero no te entendí. Haz click en /start para volver a la pantalla principal.")
 
 
 def main():
