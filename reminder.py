@@ -62,7 +62,7 @@ def main():
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		query = """SELECT user_id FROM {ddbb}  WHERE status = {status} ;""".format(ddbb='notifications', mes=mes, status = 'ON')
+		query = """SELECT user_id FROM {ddbb}  WHERE status = {status} ;""".format(ddbb='notifications', status = 'ON')
 		cursor.execute(query)
 		user_id = cursor.fetchall()
 		print (user_id)
