@@ -57,7 +57,7 @@ def query_ddbb(ddbb, dia):
 		query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE mes = {mes} AND dia_num = {dia_num};""".format(ddbb=ddbb, mes=mes, dia_num = dia_num)
 		cursor.execute(query)
 		data = cursor.fetchall()
-		print(data)
+		print(fecha)
 
 	except (Exception, psycopg2.Error) as error :
 		if(connection):
