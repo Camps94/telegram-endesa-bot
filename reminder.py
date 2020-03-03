@@ -60,12 +60,14 @@ def send_reminder(chat_id):
 
 		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + "_*GUARNICIONES*_"
 		response = requests.get(send_text)
-		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + data[0][3]
+		text = data[0][3]
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + text
 		response = requests.get(send_text)
 
 		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + "_*POSTRES*_"
 		response = requests.get(send_text)
-		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + data[0][4]
+		text = data[0][4]
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + text
 		response = requests.get(send_text)
 
 
