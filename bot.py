@@ -144,7 +144,7 @@ def activar(update, context):
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
 		cursor.execute("INSERT INTO notifications (user_id , status) VALUES (%s, %s) ON CONFLICT (user_id)\
-				DO UPDATE SET status = %s", (chat_id, response, 'ON'))
+				DO UPDATE SET status = %s", (chat_id, 'ON', 'ON'))
 		connection.commit()
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Recibirás un mensaje cada mañana :)")
 
@@ -167,7 +167,7 @@ def desactivar(update, context):
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
 		cursor.execute("INSERT INTO notifications (user_id , status) VALUES (%s, %s) ON CONFLICT (user_id)\
-				DO UPDATE SET status = %s", (chat_id, response, 'OFF'))
+				DO UPDATE SET status = %s", (chat_id, 'OFF', 'OFF'))
 		connection.commit()
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Ya no recibirás más notificaciones")
 
