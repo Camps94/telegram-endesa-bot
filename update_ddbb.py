@@ -23,7 +23,6 @@ options.headless = True
 email = os.getenv("EMAIL")
 password = os.getenv("PASSWORD_ENDESA")
 driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
-#driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
 link = 'https://mediterranea.online/client/courses'
 driver.get(link)
 driver.find_element_by_id('email').send_keys(email)
