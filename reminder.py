@@ -27,7 +27,6 @@ dispatcher = updater.dispatcher
 job = updater.job_queue
 
 def send_reminder(chat_id):
-	logger.info("User {} started bot".format(update.effective_user["id"]))
 	data = query_ddbb('daily_menu', '0')
 	#chat_id=update.effective_chat.id
 	fecha = datetime.now() 
@@ -73,11 +72,6 @@ def main():
 
 	for user in user_id:
 		send_reminder(user[0])
-
-	updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
-	updater.bot.set_webhook("https://python-telegram-endesa.herokuapp.com/" + TOKEN)
-	updater.idle()
-
 
 if __name__ == "__main__":
 
