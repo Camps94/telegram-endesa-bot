@@ -132,17 +132,8 @@ def button(update, context):
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="_*POSTRES*_")
 		context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][4])
 
-def avisos(update, context):
+def activar(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
-	keyboard = [[InlineKeyboardButton("SI", callback_data='ON')], 
-				[InlineKeyboardButton("NO", callback_data='OFF')]]
-
-	reply_markup = InlineKeyboardMarkup(keyboard)
-	update.message.reply_text('¿Quieres recibir el menu de Endesa cada mañana?', reply_markup=reply_markup)
-	
-def button(update, context):
-	query = update.callback_query
-	response = query.data
 	chat_id=update.effective_chat.id
 	try:
 		password_ddbb = os.getenv("PASSWORD_DATABASE")
@@ -152,14 +143,34 @@ def button(update, context):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		if response == 'ON':
-			context.bot.send_message(chat_id=update.effective_chat.id, text="Lo siento pero no te entendí. Haz click en /start para volver a la pantalla principal.")
-			cursor.execute("INSERT INTO notifications (user_id , status) VALUES (%s, %s) ON CONFLICT (user_id)\
+		cursor.execute("INSERT INTO notifications (user_id , status) VALUES (%s, %s) ON CONFLICT (user_id)\
 				DO UPDATE SET status = %s", (chat_id, response, 'ON'))
-		else:
-			cursor.execute("INSERT INTO notifications (user_id , status) VALUES (%s, %s) ON CONFLICT (user_id)\
+		connection.commit()
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Recibirás un mensaje cada mañana :)")
+
+	finally:
+		#closing database connection.
+		if(connection):
+			cursor.close()
+			connection.close()
+			print("PostgreSQL connection is closed")
+
+def desactivar(update, context):
+	logger.info("User {} started bot".format(update.effective_user["id"]))
+	chat_id=update.effective_chat.id
+	try:
+		password_ddbb = os.getenv("PASSWORD_DATABASE")
+		connection = psycopg2.connect(user = "lstzeuvfrgwgva",
+	                                  password = password_ddbb,
+	                                  host = "ec2-54-75-249-16.eu-west-1.compute.amazonaws.com",
+	                                  port = "5432",
+	                                  database = "d9iffrf6gikj6a")
+		cursor = connection.cursor()
+		cursor.execute("INSERT INTO notifications (user_id , status) VALUES (%s, %s) ON CONFLICT (user_id)\
 				DO UPDATE SET status = %s", (chat_id, response, 'OFF'))
 		connection.commit()
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Ya no recibirás más notificaciones")
+
 	finally:
 		#closing database connection.
 		if(connection):
