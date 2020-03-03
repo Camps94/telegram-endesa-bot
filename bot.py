@@ -40,7 +40,7 @@ def query_ddbb(ddbb, dia):
 	delta = int(dia)
 	try:
 		password = os.getenv("PASSWORD_DATABASE")
-		fecha = datetime.now() + timedelta(delta)
+		fecha = datetime.now() + timedelta(delta) + timedelta(hours=1)
 		mes = fecha.month
 		mes = str(mes)
 		dia_num = fecha.day
