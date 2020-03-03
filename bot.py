@@ -77,10 +77,10 @@ def start(update, context):
 	name = update.effective_user["first_name"] or update.effective_user["username"]
 	context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2', text="Hola {}\! "\
 		"Haz click en /menu para saber que hay de comer\!\n\n"\
+		"También puedes recibir una notificación diaria haciendo click en /activar. Para desactivarlo simplemente haz click en /desactivar.\n\n"
 		"Otras consultas disponibles:\n"\
 		"*Horario:* /horario\n"\
-		"*Ocupación del restaurante:* /ocupacion\n"\
-		"*Distribución:* /plano".format(name))
+		"*Ocupación del restaurante:* /ocupacion\n".format(name))
 
 def plano(update, context):
 	context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('images/plano.jpg', 'rb'))
