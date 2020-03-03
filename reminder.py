@@ -43,8 +43,32 @@ def send_reminder(chat_id):
 		text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes)
 		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + text
 		response = requests.get(send_text)
-		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + "*Restaurance: Cerrado*"
+
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + "_*PRIMEROS*_"
 		response = requests.get(send_text)
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + data[0][0]
+		response = requests.get(send_text)
+
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + "_*SEGUNDOS*_"
+		response = requests.get(send_text)
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + data[0][1]
+		response = requests.get(send_text)
+
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + "_*ÚNICOS*_"
+		response = requests.get(send_text)
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + data[0][2]
+		response = requests.get(send_text)
+
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + "_*GUARNICIONES*_"
+		response = requests.get(send_text)
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + data[0][3]
+		response = requests.get(send_text)
+
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + "_*POSTRES*_"
+		response = requests.get(send_text)
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + data[0][4]
+		response = requests.get(send_text)
+
 
 def main():
 
