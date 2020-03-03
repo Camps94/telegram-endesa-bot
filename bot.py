@@ -14,6 +14,7 @@ from selenium.common.exceptions import NoSuchElementException, WebDriverExceptio
 from selenium.webdriver.chrome.options import Options
 import os
 
+
 CHROMEDRIVER_PATH = os.environ.get('CHROMEDRIVER_PATH', 'chromedriver')
 GOOGLE_CHROME_BIN = os.environ.get('GOOGLE_CHROME_BIN', '/usr/bin/google-chrome')
 options = Options()
@@ -180,7 +181,6 @@ def desactivar(update, context):
 
 def unknown(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Lo siento pero no te entendí. Haz click en /start para volver a la pantalla principal.")
-
 
 def main():
 
