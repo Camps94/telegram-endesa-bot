@@ -161,11 +161,11 @@ def button(update, context):
 				DO UPDATE SET status = %s", (chat_id, response, 'OFF'))
 		connection.commit()
 	finally:
-    #closing database connection.
-    if(connection):
-    	cursor.close()
-    	connection.close()
-    	print("PostgreSQL connection is closed")
+		#closing database connection.
+		if(connection):
+			cursor.close()
+			connection.close()
+			print("PostgreSQL connection is closed")
 
 def unknown(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Lo siento pero no te entendí. Haz click en /start para volver a la pantalla principal.")
