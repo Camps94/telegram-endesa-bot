@@ -116,7 +116,6 @@ def button(update, context):
 	fecha = datetime.now() + timedelta(delta)
 	mes = fecha.month
 	dia_num = fecha.day
-	print('Pruebaasddasasdasdasdasd')
 	day = fecha.strftime('%A')
 	if day in ['Saturday', 'Sunday']:
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
