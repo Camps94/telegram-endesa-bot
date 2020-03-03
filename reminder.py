@@ -28,7 +28,6 @@ job = updater.job_queue
 
 def send_reminder(chat_id):
 	data = query_ddbb('daily_menu', '0')
-	#chat_id=update.effective_chat.id
 	fecha = datetime.now() 
 	mes = fecha.month
 	dia_num = fecha.day
