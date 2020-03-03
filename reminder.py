@@ -35,20 +35,17 @@ def send_reminder(chat_id):
 	dia_num = fecha.day
 	day = fecha.strftime('%A')
 	if day in ['Saturday', 'Sunday']:
-		context.bot.send_message(chat_id=chat_id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
-		context.bot.send_message(chat_id=chat_id, parse_mode = 'MarkdownV2',  text="*Restaurance: Cerrado*")
+		text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes)
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + text
+		response = requests.get(send_text)
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + "*Restaurance: Cerrado*"
+		response = requests.get(send_text)
 	else:
-		context.bot.send_message(chat_id=chat_id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
-		context.bot.send_message(chat_id=chat_id, parse_mode = 'MarkdownV2',  text="_*PRIMEROS*_")
-		context.bot.send_message(chat_id=chat_id, text=data[0][0])
-		context.bot.send_message(chat_id=chat_id, parse_mode = 'MarkdownV2',  text="_*SEGUNDOS*_")
-		context.bot.send_message(chat_id=chat_id, text=data[0][1])
-		context.bot.send_message(chat_id=chat_id, parse_mode = 'MarkdownV2',  text="_*ÚNICOS*_")
-		context.bot.send_message(chat_id=chat_id, text=data[0][2])
-		context.bot.send_message(chat_id=chat_id, parse_mode = 'MarkdownV2',  text="_*GUARNICIONES*_")
-		context.bot.send_message(chat_id=chat_id, text=data[0][3])
-		context.bot.send_message(chat_id=chat_id, parse_mode = 'MarkdownV2',  text="_*POSTRES*_")
-		context.bot.send_message(chat_id=chat_id, text=data[0][4])
+		text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes)
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + text
+		response = requests.get(send_text)
+		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + "*Restaurance: Cerrado*"
+		response = requests.get(send_text)
 
 def main():
 
