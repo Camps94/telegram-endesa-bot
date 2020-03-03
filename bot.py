@@ -194,8 +194,11 @@ def main():
 	menu_handler = CommandHandler('menu', menu)
 	dispatcher.add_handler(menu_handler)
 
-	avisos_handler = CommandHandler('avisos', menu)
-	dispatcher.add_handler(avisos_handler)
+	activar_handler = CommandHandler('activar', activar)
+	dispatcher.add_handler(activar_handler)
+
+	desactivar_handler = CommandHandler('desactivar', desactivar)
+	dispatcher.add_handler(desactivar_handler)
 
 	plano_handler = CommandHandler('plano', plano)
 	dispatcher.add_handler(plano_handler)
