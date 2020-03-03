@@ -58,6 +58,7 @@ def query_ddbb(ddbb, dia):
 		cursor.execute(query)
 		data = cursor.fetchall()
 		print(fecha)
+		print(fecha.day)
 
 	except (Exception, psycopg2.Error) as error :
 		if(connection):
