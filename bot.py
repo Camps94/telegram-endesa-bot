@@ -54,7 +54,7 @@ def query_ddbb(ddbb, dia):
 	                                  port = "5432",
 	                                  database = "d9iffrf6gikj6a")
 		cursor = connection.cursor()
-		query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE mes = {mes} AND dia_num = {str(fecha.day)};""".format(ddbb=ddbb, mes=mes, dia_num = dia_num)
+		query = """SELECT primeros, segundos, unicos, guarniciones, postres FROM {ddbb}  WHERE mes = {mes} AND dia_num = {dia_num};""".format(ddbb=ddbb, mes=mes, dia_num = dia_num)
 		cursor.execute(query)
 		data = cursor.fetchall()
 
