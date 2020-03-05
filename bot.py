@@ -171,7 +171,7 @@ def desactivar(update, context):
 		connection.commit()
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Ya no recibirás más notificaciones\.\n
 		\Siento que esto no haya funcionado\.\n")
-		context.bot.sendAnimation(chat_id=update.effective_chat.id, animation='https://gph.is/XH5wbV')
+		context.bot.sendAnimation(chat_id=update.effective_chat.id, animation='https://gph.is/XH5wbV', duration = 5)
 
 	finally:
 		#closing database connection.
