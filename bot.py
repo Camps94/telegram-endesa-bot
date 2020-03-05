@@ -146,7 +146,7 @@ def activar(update, context):
 		cursor.execute("INSERT INTO notifications (user_id , status) VALUES (%s, %s) ON CONFLICT (user_id)\
 				DO UPDATE SET status = %s", (chat_id, 'ON', 'ON'))
 		connection.commit()
-		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Recibirás el menu cada mañana\.")
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Recibirás el menu cada mañana a las 9\\.00 AM\.")
 
 	finally:
 		#closing database connection.
