@@ -33,11 +33,7 @@ def send_reminder(chat_id):
 	dia_num = fecha.day
 	day = fecha.strftime('%A')
 	if day in ['Saturday', 'Sunday']:
-		text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes)
-		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + text
-		response = requests.get(send_text)
-		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + "*Restaurance: Cerrado*"
-		response = requests.get(send_text)
+		pass
 	else:
 		text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes)
 		send_text = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage?chat_id=' + chat_id + '&parse_mode=MarkdownV2&text=' + text
