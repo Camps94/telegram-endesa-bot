@@ -119,13 +119,13 @@ def button(update, context):
 	if day in ['Saturday', 'Sunday']:
 		#context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*Menu del día:* {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Restaurante: *Cerrado\\.*")
-		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="#QuédateEnCasa")
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="\\#QuédateEnCasa")
 		context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('images/coronavirus.jpg', 'rb'))
 	else:
 
 		#context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*Menu del día:* {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Restaurante: *Cerrado\\.*")
-		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="#QuédateEnCasa")
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="\\#QuédateEnCasa")
 		context.bot.send_photo(chat_id=update.effective_chat.id, photo=open('images/coronavirus.jpg', 'rb'))
 		'''
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
