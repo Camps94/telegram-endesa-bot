@@ -118,8 +118,12 @@ def button(update, context):
 	day = fecha.strftime('%A')
 	if day in ['Saturday', 'Sunday']:
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
-		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*Restaurance: Cerrado*")
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*Restaurante: Cerrado hasta nuevo aviso\\.*")
 	else:
+
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
+		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="*Restaurante: Cerrado hasta nuevo aviso\\.*")
+		'''
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="Menu del día: {dia_num}/{mes}/2020".format(dia_num=dia_num, mes=mes))
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="_*PRIMEROS*_")
 		context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][0])
@@ -131,6 +135,7 @@ def button(update, context):
 		context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][3])
 		context.bot.send_message(chat_id=update.effective_chat.id, parse_mode = 'MarkdownV2',  text="_*POSTRES*_")
 		context.bot.send_message(chat_id=update.effective_chat.id, text=data[0][4])
+		'''
 
 def activar(update, context):
 	logger.info("User {} started bot".format(update.effective_user["id"]))
